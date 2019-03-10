@@ -9,6 +9,7 @@ tmp<fvVectorMatrix> tUEqn
   + turbulence->divDevReff(U)
  ==
     fvOptions(U)
+  + invrhoInf*kinematicCloud.SU(U)
 );
 fvVectorMatrix& UEqn = tUEqn.ref();
 

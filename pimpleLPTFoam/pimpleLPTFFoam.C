@@ -39,6 +39,7 @@ Description
 #include "turbulentTransportModel.H"
 #include "pimpleControl.H"
 #include "fvOptions.H"
+#include "basicKinematicCollidingCloud.H
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -49,6 +50,7 @@ int main(int argc, char *argv[])
     #include "setRootCase.H"
     #include "createTime.H"
     #include "createMesh.H"
+    #include "readGravitationalAcceleration.H
     #include "createControl.H"
     #include "createTimeControls.H"
     #include "createFields.H"
@@ -88,7 +90,9 @@ int main(int argc, char *argv[])
                 turbulence->correct();
             }
         }
-
+        Info« "\nEvolving " « kinematicCloud.name() « endl;
+        kinematicCloud.evolve();
+        
         runTime.write();
 
         Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
